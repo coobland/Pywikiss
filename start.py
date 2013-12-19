@@ -20,8 +20,15 @@ config['WIKI_VERSION'] = 'BlazeKiss 0.1';
 def home():
 	return "Salut Coco"
 
+@app.route('/toto')
+@view('test1.tpl')
+def toto():
+	return {'titre' : 'toto'}
+
+
 @app.route('/:mon_id')
 @view('template.tpl')
+#@view('t.tpl')
 def hello(mon_id):
 	config['WIKI_TITLE_BRUT'] = mon_id;
 

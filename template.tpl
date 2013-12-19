@@ -1,4 +1,4 @@
-% include('header.tpl', title='Page Title')
+%include('header.tpl')
 
 	<div class="services-page main grid-wrap">
 
@@ -10,7 +10,7 @@
 			{{get('TOC', ''}}
 		
 			<menu>
-            {<div id="menu">MENU</div>}
+            <div id="menu">MENU</div>
 			</menu>
 		</aside>
 		
@@ -24,13 +24,12 @@
 					
 			
 			</article>
-			</div> <!-- 100%articles-->
+			</div> 
 		 <br/>
          <hr/>
          {{PAGE_TITLE or ''}} | {{LAST_CHANGE  or ''}} {{TIME or ''}} ({{RECENT_CHANGES or ''}}) |{{EDIT or ''}} {{(HELP or '')}} {{HISTORY or ''}}
-		</section>	
-		       
-	</div> <!--main-->
+		</section>    
+	</div>
 
-% include('foother.tpl')
 
+%include('foother.tpl')

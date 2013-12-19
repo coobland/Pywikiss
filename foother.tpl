@@ -14,13 +14,13 @@
 
 <!-- Javascript - jQuery -->
 <script src="http://code.jquery.com/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="/static/js/jquery-1.7.2.min.js"><\/script>')</script>
 
 <!--[if (gte IE 6)&(lte IE 8)]>
 <script src="js/selectivizr.js"></script>
 <![endif]-->
 
-<script src="js/scripts.js"></script>
+<script src="/static/js/scripts.js"></script>
 
 </body>
 </html>
