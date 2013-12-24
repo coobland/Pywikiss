@@ -7,7 +7,7 @@
 		</header>
 
 		<aside class="grid col-one-quarter mq2-col-full">
-			{{get('TOC', ''}}
+			{{get('TOC', 'pas de TOC')}}
 		
 			<menu>
             <div id="menu">MENU</div>
@@ -19,17 +19,14 @@
 			<div class="grid-wrap">
 			<article id="navbutton" class="grid col-full">
 
+			{{get('CONTENT', 'pas de contenu')}} 
 
-				{{CONTENT or ''}}
-					
-			
 			</article>
 			</div> 
 		 <br/>
          <hr/>
-         {{PAGE_TITLE or ''}} | {{LAST_CHANGE  or ''}} {{TIME or ''}} ({{RECENT_CHANGES or ''}}) |{{EDIT or ''}} {{(HELP or '')}} {{HISTORY or ''}}
+         <!-- PAGE_TITLE  | LAST_CHANGE   TIME (RECENT_CHANGES ) |EDIT HELP HISTORY -->
 		</section>    
 	</div>
-
 
 %include('foother.tpl')

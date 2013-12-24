@@ -2,10 +2,7 @@
 	<footer class="grid-wrap">
 	
 		<nav class="grid col-full ">
-            Wiki utilisant <a href="http://wikiss.tuxfamily.org/">{{WIKI_VERSION or ''}}</a> génétiquement modifié par <a href="mailto:idleman@idleman.fr">@Idleman</a>
-			<ul>
-				<li><a href="./rss_fr.xml">Flux RSS</a></li>
-			</ul>
+            Wiki utilisant <a href="http://wikiss.tuxfamily.org/">{{get('WIKI_VERSION', 'No Title')}}</a> génétiquement modifié par <a href="mailto:idleman@idleman.fr">@Idleman</a>
 		</nav>
 	</footer>
 </div>

@@ -4,7 +4,7 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 
-<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="{LANG}" lang="{LANG}"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> <!--<![endif]-->
 
 <head>
 	<meta charset="UTF-8">
@@ -17,7 +17,7 @@
 	<meta name="description" content="Designa Studio, a HTML5 / CSS3 template.">
 	<meta name="author" content="Sylvain Lafitte, Web Designer, sylvainlafitte.com">
 	
-	<title>{{WIKI_TITLE or 'No title'}} - {{PAGE_TITLE_BRUT  or 'No title'}</title>
+ 	<title>{{get('WIKI_TITLE', 'Titre du wiki')}} - {{get('PAGE_TITLE_BRUT', 'Titre de la page')}}</title>
 	
 	<link rel="shortcut icon" type="/static/image/x-icon" href="favicon.ico">
 	<link rel="shortcut icon" type="/static/image/png" href="favicon.png">
