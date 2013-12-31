@@ -19,7 +19,7 @@
 			<div class="grid-wrap">
 			<article id="navbutton" class="grid col-full">
 
-			{{get('CONTENT', 'pas de contenu')}} 
+			{{!CONTENT if CONTENT else "No content"}} 
 
 			</article>
 			</div> 

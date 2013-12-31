@@ -20,6 +20,13 @@ config['WIKI_VERSION'] = 'BlazeKiss 0.1';
 def home():
 	return redirect("/Accueil")
 
+@app.route('/static/<filename:path>')
+def server_static(filename):
+    """
+        Sert les fichiers statiques tel que .js, .css, .jpeg, etc...
+    """
+    return static_file(filename, root='.')
+
 @app.route('/:mon_id')
 @view('template.tpl')
 def hello(mon_id):
@@ -29,6 +36,7 @@ def hello(mon_id):
 	
 	print(" -- Chemin du ficheir " + file_path)
 
+	content = ''
 	if os.path.exists(file_path):
 
 		print " -- le fichier exist"
@@ -41,23 +49,17 @@ def hello(mon_id):
 		
 		fichier.close()
 
-		print ' ---- ______ -----'
+		print ' ----  ### CONTENT ### '
 		print content
 
-		if content is not None and len(content) > 0:
-			config['CONTENT'] = content
 
+	if len(content) > 0:
+		config['CONTENT'] = content
 	else:
-		print " -- lefichier n'esxiste pas"
+		config['CONTENT'] = ''
+		print " -- Pas de contenu"
 
 	return config
  
-@app.route('/static/<filename:path>')
-def server_static(filename):
-    """
-        Sert les fichiers statiques tel que .js, .css, .jpeg, etc...
-    """
-    return static_file(filename, root='.')
-
 # Lancement du serveur sur le port 8080
 run(app, host='localhost', port=8080, reloader=True)
