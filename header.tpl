@@ -17,7 +17,7 @@
 	<meta name="description" content="Designa Studio, a HTML5 / CSS3 template.">
 	<meta name="author" content="Sylvain Lafitte, Web Designer, sylvainlafitte.com">
 	
- 	<title>{{get('WIKI_TITLE', 'Titre du wiki')}} - {{get('PAGE_TITLE_BRUT', 'Pas de titre')}}</title>
+ 	<title>{{get('WIKI_TITLE', 'Titre du wiki')}} - {{get('PAGE_NAME', 'Pas de titre')}}</title>
 	
 	<link rel="shortcut icon" type="/static/image/x-icon" href="favicon.ico">
 	<link rel="shortcut icon" type="/static/image/png" href="favicon.png">
@@ -39,7 +39,7 @@
 <div class="container">
 
 	<header id="navtop">
-		<a href="./?page=Accueil" class="logo fleft">
+		<a href="./Accueil" class="logo fleft">
 			<img src="/static/img/logo.png" alt="BlazeKiss">
 		</a>
 		
@@ -47,13 +47,13 @@
 
 			
 			<ul>
-				<li><a href="./Accueil">Accueil</a></li>
+				<li><a href="/Accueil">Accueil</a></li>
 			</ul>
 			<ul>
 				<li><a href="http://blog.idleman.fr">Blog</a></li>
 			</ul>
             <ul>
-				<li><a href="./Contact & Credits">Contact</a></li>
+				<li><a href="/Contact & Credits">Contact</a></li>
 			</ul>
 		</nav>
 	</header>

@@ -27,12 +27,14 @@ def server_static(filename):
     """
     return static_file(filename, root='.')
 
-@app.route('/:mon_id')
+@app.route('/<page_name>')
+@app.route('/<page_name>/<action>')
 @view('template.tpl')
-def hello(mon_id):
-	config['PAGE_TITLE_BRUT'] = mon_id;
+def hello(page_name, action=''):
+	config['PAGE_NAME'] = page_name;
+	config['ACTION'] = action;
 
-	file_path = "./pages/" + mon_id + ".txt"
+	file_path = "./pages/" + page_name + ".txt"
 	
 	print(" -- Chemin du ficheir " + file_path)
 
@@ -42,8 +44,12 @@ def hello(mon_id):
 		print " -- le fichier exist"
 		# Ouverture d'un fichier en *lecture*:
 		fichier = open(file_path, "r")	 
-		toutesleslignes = fichier.readlines()
-		content = markdown.markdown(''.join(toutesleslignes))
+		lines = fichier.readlines()
+		lines = ''.join(lines)
+		if action == 'edit':
+			content = lines 
+		else:
+			content = markdown.markdown(lines)
 
 		# content = markdown.markdownFromFile(fichier)
 		
@@ -61,5 +67,18 @@ def hello(mon_id):
 
 	return config
  
+
+#  FOR THE PASSWORD PART. 
+# @post('/login') # or @route('/login', method='POST')
+# def do_login():
+#     username = request.forms.get('username')
+#     password = request.forms.get('password')
+#     if check_login(username, password):
+#         return "<p>Your login information was correct.</p>"
+#     else:
+#         return "<p>Login failed.</p>"
+
+# MANAGING COOCKIES  http://bottlepy.org/docs/dev/tutorial.html#cookies 
+
 # Lancement du serveur sur le port 8080
 run(app, host='localhost', port=8080, reloader=True)
