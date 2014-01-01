@@ -4,7 +4,7 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 
-<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="{LANG}" lang="{LANG}"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{get('LANG', 'en')}}" lang="{{get('LANG', 'en')}}"> <!--<![endif]-->
 
 <head>
 	<meta charset="UTF-8">
@@ -17,7 +17,7 @@
 	<meta name="description" content="Designa Studio, a HTML5 / CSS3 template.">
 	<meta name="author" content="Sylvain Lafitte, Web Designer, sylvainlafitte.com">
 	
-	<title>{{WIKI_TITLE or 'No title'}} - {{PAGE_TITLE_BRUT  or 'No title'}</title>
+ 	<title>{{get('WIKI_TITLE', 'Titre du wiki')}} - {{get('PAGE_NAME', 'Pas de titre')}}</title>
 	
 	<link rel="shortcut icon" type="/static/image/x-icon" href="favicon.ico">
 	<link rel="shortcut icon" type="/static/image/png" href="favicon.png">
@@ -25,7 +25,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/static/css/style.css">
 	
-	<!--[if lt IE 9]>
+	<!--[if lt IE 9]>l
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
@@ -39,7 +39,7 @@
 <div class="container">
 
 	<header id="navtop">
-		<a href="./?page=Accueil" class="logo fleft">
+		<a href="./Accueil" class="logo fleft">
 			<img src="/static/img/logo.png" alt="BlazeKiss">
 		</a>
 		
@@ -47,13 +47,13 @@
 
 			
 			<ul>
-				<li><a href="./Accueil">Accueil</a></li>
+				<li><a href="/Accueil">Accueil</a></li>
 			</ul>
 			<ul>
 				<li><a href="http://blog.idleman.fr">Blog</a></li>
 			</ul>
             <ul>
-				<li><a href="./Contact & Credits">Contact</a></li>
+				<li><a href="/Contact & Credits">Contact</a></li>
 			</ul>
 		</nav>
 	</header>
