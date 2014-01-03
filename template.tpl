@@ -23,6 +23,11 @@
 			<div class="grid-wrap">
 			<article id="navbutton" class="grid col-full">
 
+			% if defined('ERROR'):
+				<div class="error">{{ERROR}}</div>
+				<hr/>
+			% end
+
 			% if ACTION == 'edit':
 
 			<form method="post" action="./save">
@@ -31,7 +36,7 @@
 				{{!CONTENT if CONTENT else "No content"}}
 				</textarea>
 				<input type="hidden" name="page" value="Projets" /><br/>
-				<p align="right">Mot de passe : <input type="password" name="sc"/>
+				<p align="right">Mot de passe : <input type="password" name="password"/>
 					<input type="submit" value="Enregistrer" accesskey="s" />
 				</p>
 			</form>
@@ -45,7 +50,7 @@
 			</div> 
 		 <br/>
          <hr/>
-         <a href="./{{PAGE_NAME}}/edit">Éditer</a>
+         <a href="/{{PAGE_NAME}}/edit">Éditer</a>
          <!-- PAGE_TITLE  | LAST_CHANGE   TIME (RECENT_CHANGES ) |EDIT HELP HISTORY -->
 		</section>    
 	</div>
