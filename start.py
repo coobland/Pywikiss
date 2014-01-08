@@ -24,9 +24,9 @@ def home():
 @app.route('/static/<filename:path>')
 def server_static(filename):
     """
-        Sert les fichiers statiques tel que .js, .css, .jpeg, etc...
+        Sert les fichiers statiques tel que .js, .css, images, etc...
     """
-    return static_file(filename, root='.')
+    return static_file(filename, root='./static/')
 
 @app.route('/<page_name>')
 @app.route('/<page_name>/<action>')
