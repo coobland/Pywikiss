@@ -17,7 +17,5 @@
 <script src="js/selectivizr.js"></script>
 <![endif]-->
 
-<script src="/static/js/scripts.js"></script>
-
 </body>
 </html>
