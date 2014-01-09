@@ -4,7 +4,7 @@ from bottle import Bottle, run, view, static_file, redirect, request, response
 import json
 import markdown
 import os
-
+import time
 
 app = Bottle()
  
@@ -17,14 +17,14 @@ config['WIKI_VERSION'] = 'Pywikiss 0.1';
 @app.route('/')
 def home():
 	"""
-		La racine du wiki est rediriger vers la page Accueil.
+		The root of the wiki is redirected to the Home page.
 	"""
 	return redirect("/Accueil")
 
 @app.route('/static/<filename:path>')
 def server_static(filename):
     """
-        Sert les fichiers statiques tel que .js, .css, images, etc...
+        Serving static files such as. Js,. Css, images, etc ...
     """
     return static_file(filename, root='./static/')
 
@@ -37,10 +37,12 @@ def all_pages(page_name, action=''):
 	"""
 	return show_page(page_name, action)
 
-#  FOR THE PASSWORD PART.
 @app.route('/<page_name>/<action>', method='POST')
 @view('template.tpl')
 def save_page(page_name, action=''):
+	'''
+
+	'''
 	print " --> save_page"
 
 	params = {}
@@ -49,7 +51,7 @@ def save_page(page_name, action=''):
 		do_save(page_name)
 		return redirect("/%s" % page_name)
 	else:
-		params['ERROR'] = 'Mot de passe spécifié incorrect.'
+		params['ERROR'] = 'Password given incorrect.'
 		action = 'edit'
 
 	return show_page(page_name, action, params)
@@ -57,34 +59,33 @@ def save_page(page_name, action=''):
 def show_page(page_name, action, params={}):
 
 	params.update(config)
-
 	params['PAGE_NAME'] = page_name
 	params['ACTION'] = action
 
 	file_path = "./pages/" + page_name + ".txt"
 	
-	print(" -- Affiche la page " + file_path)
+	print(" -- Show page : " + file_path)
 
 	content = ''
 	if os.path.exists(file_path):
 
-		print " -- le fichier exist"
-		# Ouverture d'un fichier en *lecture*:
-		fichier = open(file_path, "r")	 
-		lines = fichier.readlines()
+		print " -- File exist"
+		# Open file in read mode.
+		page_file = open(file_path, "r")	 
+		lines = page_file.readlines()
 		lines = ''.join(lines)
 		if action == 'edit':
 			content = lines 
 		else:
 			content = markdown.markdown(lines)
 
-		fichier.close()
+		page_file.close()
 
 	if len(content) > 0:
 		params['CONTENT'] = content
 	else:
 		params['CONTENT'] = ''
-		print " -- Page vide."
+		print " -- Empty Page."
 
 	return params
 
@@ -102,6 +103,8 @@ def do_save(page_name):
 # en dans le ficheir backup : // 2013/02/13 10:30 /  90.83.105.41
 # regarder method php   urlencode(stripslashes($PAGE_TITLE) 
 
+
+	print time.strftime('%d/%m/%y %H:%M:%S',time.localtime())
 
 	content = request.forms.get('content')
 
@@ -122,11 +125,11 @@ def authentified():
 			response.set_cookie("AutorisationPyWiKiss", g_pass, max_age=60*60*24)
 			print " -- enregistrement dans le coockie"
 
-		print " -- Authentifié"
+		print " -- authenticated"
 		return True
 	else:
-		print " -- Non Authentifié"
+		print " -- Not authenticated"
 		return False
 
-# Lancement du serveur sur le port 8080
+# Launch server on port 8080
 run(app, host='localhost', port=8080, reloader=True)
