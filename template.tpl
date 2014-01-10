@@ -28,6 +28,7 @@
 				<hr/>
 			% end
 
+
 			% if ACTION == 'edit':
 
 			<form method="post" action="./save">
@@ -50,7 +51,11 @@
 			</div> 
 		 <br/>
          <hr/>
+         
+         <a href="/{{get('PAGE_NAME', 'Accueil')}}">{{get('PAGE_NAME', 'Accueil')}}</a> | 
+         {{get('LAST_CHANGE', '')}} | 
          <a href="/{{PAGE_NAME}}/edit">Éditer</a>
+         
          <!-- PAGE_TITLE  | LAST_CHANGE   TIME (RECENT_CHANGES ) |EDIT HELP HISTORY -->
 		</section>    
 	</div>

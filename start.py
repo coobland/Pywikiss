@@ -7,6 +7,8 @@ import os
 import time
 
 app = Bottle()
+
+# TODO : Virer l'input dans le template si l'utilisateur est authentifié.
  
 # Configuration file loading
 config_file = open( 'config.json' )
@@ -77,7 +79,12 @@ def show_page(page_name, action, params={}):
 		if action == 'edit':
 			content = lines 
 		else:
+			# TODO :  Pour les besoins du wiki, remplacer [[XXX]] par [XXX](/XXX)
 			content = markdown.markdown(lines)
+
+		# Last modification date.
+		nbs = os.path.getmtime(file_path) 
+		print time.strftime('%d/%m/%y %H:%M:%S',time.gmtime(nbs))
 
 		page_file.close()
 
