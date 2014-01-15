@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from bottle import Bottle, run, view, static_file, redirect, request, response
-import json
-import markdown
-import os
-import time
+import os, time, re
+import json, markdown
 
 app = Bottle()
 
@@ -79,8 +77,13 @@ def show_page(page_name, action, params={}):
 		if action == 'edit':
 			content = lines 
 		else:
-			# TODO :  Pour les besoins du wiki, remplacer [[XXX]] par [XXX](/XXX)
-			content = markdown.markdown(lines)
+			# Replace this wiki syntax [[URL]] to the markdown syntax [URL](URL)
+			patternStr = ur'\[{2}([^\]]*)\]{2}'   # OR '\[\[([^\]]*)\]\]'  
+			repStr = ur'[\1](\1)'
+			content = re.sub(patternStr, repStr, lines)
+
+			# Markdown transformation
+			content = markdown.markdown(content)
 
 		# Last modification date.
 		nbs = os.path.getmtime(file_path) 
