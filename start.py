@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from bottle import Bottle, run, view, static_file, redirect, request, response
-import json
-import markdown
-import os
-import time
+import os, time, re
+import json, markdown
 
 app = Bottle()
+
+# TODO : Virer l'input dans le template si l'utilisateur est authentifié.
  
 # Configuration file loading
 config_file = open( 'config.json' )
@@ -77,7 +77,13 @@ def show_page(page_name, action, params={}):
 		if action == 'edit':
 			content = lines 
 		else:
-			content = markdown.markdown(lines)
+			# Replace this wiki syntax [[URL]] to the markdown syntax [URL](URL)
+			patternStr = ur'\[{2}([^\]]*)\]{2}'   # OR '\[\[([^\]]*)\]\]'  
+			repStr = ur'[\1](\1)'
+			content = re.sub(patternStr, repStr, lines)
+
+			# Markdown transformation
+			content = markdown.markdown(content)
 
 		page_file.close()
 
