@@ -3,16 +3,27 @@
 from bottle import Bottle, run, view, static_file, redirect, request, response
 import os, time, re
 import json, markdown
+import logging
 
 app = Bottle()
 
 # TODO : Virer l'input dans le template si l'utilisateur est authentifié.
+# BUGFIX : l'enregistrement ajoute pleins d'espaces au debut du contenu.
  
 # Configuration file loading
 config_file = open( 'config.json' )
 config = json.loads( config_file.read())
 
 config['WIKI_VERSION'] = 'Pywikiss 0.1';
+
+# logs
+# logs DEBUG dans tri-ocs-debug.log
+logging.basicConfig(filename='piwykiss-server.log',
+                    level=logging.DEBUG,
+                    format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+                    datefmt='%d-%m-%Y %H:%M:%S',
+                    filemode='w')
+logger = logging.getLogger(__name__)
 
 @app.route('/')
 def home():
@@ -35,7 +46,7 @@ def all_pages(page_name, action=''):
 	"""
 
 	"""
-	return show_page(page_name, action)
+	return show_page(page_name, action, {})
 
 @app.route('/<page_name>/<action>', method='POST')
 @view('template.tpl')
@@ -43,14 +54,15 @@ def save_page(page_name, action=''):
 	'''
 
 	'''
-	print " --> save_page"
+	logger.info("save page : %s" % page_name)
 
 	params = {}
-	if authentified():
-		print (' -- save')
+	if authentificated():
+		logger.debug("page saved")
 		do_save(page_name)
 		return redirect("/%s" % page_name)
 	else:
+		logger.warning('Password given incorrect')
 		params['ERROR'] = 'Password given incorrect.'
 		action = 'edit'
 
@@ -64,18 +76,20 @@ def show_page(page_name, action, params={}):
 
 	file_path = "./pages/" + page_name + ".txt"
 	
-	print(" -- Show page : " + file_path)
+	logger.info("Show page : " + file_path)
 
 	content = ''
 	if os.path.exists(file_path):
 
-		print " -- File exist"
 		# Open file in read mode.
 		page_file = open(file_path, "r")	 
 		lines = page_file.readlines()
 		lines = ''.join(lines)
 		if action == 'edit':
-			content = lines 
+			content = lines
+			if authentificated() == False:
+				logger.debug("je mets AUTHENTIFICATED à false")
+				params['AUTHENTIFICATED'] = 'False'
 		else:
 			# Replace this wiki syntax [[URL]] to the markdown syntax [URL](URL)
 			patternStr = ur'\[{2}([^\]]*)\]{2}'   # OR '\[\[([^\]]*)\]\]'  
@@ -91,7 +105,7 @@ def show_page(page_name, action, params={}):
 		params['CONTENT'] = content
 	else:
 		params['CONTENT'] = ''
-		print " -- Empty Page."
+		logger.debug("Empty page")
 
 	return params
 
@@ -118,9 +132,9 @@ def do_save(page_name):
 	fichier.write(content)
 	fichier.close()
 
-def authentified():
+def authentificated():
 	"""
-		Check if user is correctly authenfified.l
+		Check if user is correctly authenfificated.
 	"""
 	u_pass = request.forms.get('password')
 	g_pass = config['PASSWORD']
@@ -129,12 +143,12 @@ def authentified():
 	if request.get_cookie("AutorisationPyWiKiss") and request.get_cookie("AutorisationPyWiKiss") == g_pass or u_pass and u_pass == g_pass or g_pass == '':
 		if request.get_cookie("AutorisationPyWiKiss") == None or request.get_cookie("AutorisationPyWiKiss") != g_pass:
 			response.set_cookie("AutorisationPyWiKiss", g_pass, max_age=60*60*24)
-			print " -- enregistrement dans le coockie"
+			logger.debug("enregistrement dans le coockie")
 
-		print " -- authenticated"
+		logger.debug("authentificated")
 		return True
 	else:
-		print " -- Not authenticated"
+		logger.debug("Not authentificated")
 		return False
 
 # Launch server on port 8080

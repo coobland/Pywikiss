@@ -36,7 +36,10 @@
 				{{!CONTENT if CONTENT else "No content"}}
 				</textarea>
 				<input type="hidden" name="page" value="Projets" /><br/>
-				<p align="right">Mot de passe : <input type="password" name="password"/>
+				<p align="right">
+				% if defined('AUTHENTIFICATED'):
+					Mot de passe : <input type="password" name="password"/>
+				% end
 					<input type="submit" value="Enregistrer" accesskey="s" />
 				</p>
 			</form>
@@ -50,6 +53,8 @@
 			</div> 
 		 <br/>
          <hr/>
+          <a href="/{{get('PAGE_NAME', 'Accueil')}}">{{get('PAGE_NAME', 'Accueil')}}</a> | 
+         {{get('LAST_CHANGE', '')}} | 
          <a href="/{{PAGE_NAME}}/edit">Éditer</a>
          <!-- PAGE_TITLE  | LAST_CHANGE   TIME (RECENT_CHANGES ) |EDIT HELP HISTORY -->
 		</section>    
