@@ -31,10 +31,7 @@
 			% if ACTION == 'edit':
 
 			<form method="post" action="./save">
-				<textarea name="content" cols="83" rows="30" style="width: 100%;">
-
-				{{!CONTENT if CONTENT else "No content"}}
-				</textarea>
+				<textarea name="content" cols="83" rows="30" style="width: 100%;">{{!CONTENT if CONTENT else "No content"}}</textarea>
 				<input type="hidden" name="page" value="Projets" /><br/>
 				<p align="right">
 				% if defined('AUTHENTIFICATED'):

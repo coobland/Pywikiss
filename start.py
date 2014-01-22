@@ -8,7 +8,6 @@ import logging
 app = Bottle()
 
 # TODO : Virer l'input dans le template si l'utilisateur est authentifié.
-# BUGFIX : l'enregistrement ajoute pleins d'espaces au debut du contenu.
  
 # Configuration file loading
 config_file = open( 'config.json' )
