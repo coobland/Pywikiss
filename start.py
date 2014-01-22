@@ -7,8 +7,6 @@ import logging
 
 app = Bottle()
 
-# TODO : Virer l'input dans le template si l'utilisateur est authentifié.
- 
 # Configuration file loading
 config_file = open( 'config.json' )
 config = json.loads( config_file.read())
@@ -122,8 +120,7 @@ def do_save(page_name):
 # en dans le ficheir backup : // 2013/02/13 10:30 /  90.83.105.41
 # regarder method php   urlencode(stripslashes($PAGE_TITLE) 
 
-
-	print time.strftime('%d/%m/%y %H:%M:%S',time.localtime())
+#	print time.strftime('%d/%m/%y %H:%M:%S',time.localtime())
 
 	content = request.forms.get('content')
 
