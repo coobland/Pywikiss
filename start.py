@@ -7,15 +7,16 @@ import logging
 
 app = Bottle()
 
+MENU_PATH = "./pages/Menu.txt"
+
 # Configuration file loading
 config_file = open( 'config.json' )
 config = json.loads( config_file.read())
 
 config['WIKI_VERSION'] = 'Pywikiss 0.1';
 
-# logs
-# logs DEBUG dans tri-ocs-debug.log
-logging.basicConfig(filename='piwykiss-server.log',
+# logs DEBUG dans pywikiss-server.log
+logging.basicConfig(filename='pywikiss-server.log',
                     level=logging.DEBUG,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
                     datefmt='%d-%m-%Y %H:%M:%S',
@@ -79,7 +80,7 @@ def show_page(page_name, action, params={}):
 	if os.path.exists(file_path):
 
 		# Open file in read mode.
-		page_file = open(file_path, "r")	 
+		page_file = open(file_path, "r")
 		lines = page_file.readlines()
 		lines = ''.join(lines)
 		if action == 'edit':
@@ -104,7 +105,29 @@ def show_page(page_name, action, params={}):
 		params['CONTENT'] = ''
 		logger.debug("Empty page")
 
+	# Add menu content
+	params['MENU'] = compute_menu()
+
 	return params
+
+def compute_menu():
+
+	try:
+		if os.path.exists(MENU_PATH):
+			page_file = open(MENU_PATH, "r")
+			lines = page_file.readlines()
+			lines = ''.join(lines)
+			# Replace this wiki syntax [[URL]] to <li><a href="./URL">URL</a></li>
+			patternStr = ur'\[{2}([^\]]*)\]{2}'   # OR '\[\[([^\]]*)\]\]'  
+			repStr = ur'<li><a href="./\1">\1</a></li>'
+			menu = re.sub(patternStr, repStr, lines)
+			if len(menu) > 0:
+				return "<ul>" + menu + "</ul>"
+
+	except IOError:
+		logger.warning("Can't open " + MENU_PATH)
+
+	return ""
 
 def do_save(page_name):
 

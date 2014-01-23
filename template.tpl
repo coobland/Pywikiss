@@ -13,7 +13,7 @@
 			{{get('TOC', 'pas de TOC')}}
 		
 			<menu>
-            <div id="menu">MENU</div>
+            <div id="menu">{{!MENU if MENU else ""}}</div>
 			</menu>
 		%end
 		</aside>

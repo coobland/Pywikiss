@@ -23,7 +23,10 @@ Pikiss use the markdown syntax.
 
 ## TODO List 
 
-* Manage menu
+* --Manage menu--
 * Manage pages backup  
 * Manage toc 
 * enregistrer le mot de passe en md5 dans le coockie.
+* FIXME : problème d'authentification sur les nouvelles pages.
+* FIXME : gestion des liens vers les pages un peu douteuse.
+* FIXME : mauvaise gestion des caractères accentués.
