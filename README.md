@@ -23,7 +23,7 @@ Pywikiss use the markdown syntax.
 
 ## TODO List 
 
-* <s>Manage menu</s>
+* ~~Manage menu~~
 * Manage pages backup  
 * Manage toc 
 * enregistrer le mot de passe en md5 dans le coockie.
