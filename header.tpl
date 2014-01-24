@@ -39,7 +39,7 @@
 <div class="container">
 
 	<header id="navtop">
-		<a href="./Accueil" class="logo fleft">
+		<a href="/Accueil" class="logo fleft">
 			<img src="/static/img/logo.png" alt="BlazeKiss">
 		</a>
 		
@@ -48,9 +48,6 @@
 			
 			<ul>
 				<li><a href="/Accueil">Accueil</a></li>
-			</ul>
-			<ul>
-				<li><a href="http://blog.idleman.fr">Blog</a></li>
 			</ul>
             <ul>
 				<li><a href="/Contact & Credits">Contact</a></li>
