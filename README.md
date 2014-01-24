@@ -1,9 +1,9 @@
 # Pywikiss
 
-Piwikiss is a Wiki developed with KISS (**K**eep **I**t **S**imple **S**tupid) principe. 
-It is strongly inspired by [Blazekiss](http://projet.idleman.fr/blazekiss/) but written in python. 
+Pywikiss is a Wiki developed with KISS (**K**eep **I**t **S**imple **S**tupid) principe. 
+It is strongly inspired by [Blazekiss](http://projet.idleman.fr/blazekiss/) but written in python.
 It use the micro framework [bottle](http://bottlepy.org). 
-Pikiss use the markdown syntax.
+Pywikiss use the markdown syntax.
 
 ## Install it
 
@@ -23,7 +23,7 @@ Pikiss use the markdown syntax.
 
 ## TODO List 
 
-* --Manage menu--
+* <s>Manage menu</s>
 * Manage pages backup  
 * Manage toc 
 * enregistrer le mot de passe en md5 dans le coockie.
