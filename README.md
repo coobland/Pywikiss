@@ -26,7 +26,7 @@ Pywikiss use the markdown syntax.
 * ~~Manage menu~~
 * Manage pages backup  
 * Manage toc 
-* enregistrer le mot de passe en md5 dans le coockie.
+* enregistrer le mot de passe en md5 dans le cookie.
 * FIXME : problème d'authentification sur les nouvelles pages.
-* FIXME : gestion des liens vers les pages un peu douteuse.
+* ~~FIXME : gestion des liens vers les pages un peu douteuse.~~
 * FIXME : mauvaise gestion des caractères accentués.

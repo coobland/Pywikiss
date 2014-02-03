@@ -16,6 +16,7 @@ config = json.loads( config_file.read())
 config['WIKI_VERSION'] = 'Pywikiss 0.1';
 
 # logs DEBUG dans pywikiss-server.log
+DEBUG_LEVEL = {'CRITICAL':50, 'ERROR':40, 'WARNING':30, 'INFO':20, 'DEBUG':10}
 logging.basicConfig(filename='pywikiss-server.log',
                     level=logging.DEBUG,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
@@ -83,6 +84,8 @@ def show_page(page_name, action, params={}):
 		page_file = open(file_path, "r")
 		lines = page_file.readlines()
 		lines = ''.join(lines)
+
+		# Edit mode
 		if action == 'edit':
 			content = lines
 			if authentificated() == False:
@@ -99,14 +102,21 @@ def show_page(page_name, action, params={}):
 
 		page_file.close()
 
+	# Add content parameter.
 	if len(content) > 0:
 		params['CONTENT'] = content
 	else:
 		params['CONTENT'] = ''
 		logger.debug("Empty page")
 
-	# Add menu content
+	# Add menu content parameter.
 	params['MENU'] = compute_menu()
+
+	# Add last file modification date label parameter.
+	params['CHANGE'] = 'Dernière modification'
+
+	# Add last file modification date parameter.
+	params['TIME'] = time.ctime(os.path.getmtime(file_path))
 
 	return params
 
@@ -144,6 +154,7 @@ def do_save(page_name):
 # regarder method php   urlencode(stripslashes($PAGE_TITLE) 
 
 #	print time.strftime('%d/%m/%y %H:%M:%S',time.localtime())
+# ou time.ctime()
 
 	content = request.forms.get('content')
 

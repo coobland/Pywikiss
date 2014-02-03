@@ -2,7 +2,7 @@
 	<footer class="grid-wrap">
 	
 		<nav class="grid col-full ">
-           Wiki utilisant <a href="https://github.com/coobland/Pywikiss">{{get('WIKI_VERSION', 'No Title')}}</a> très, très fortement inspiré de <a href="http://projet.idleman.fr/blazekiss/">Blazekiss</a>
+           Wiki utilisant <a href="https://github.com/coobland/Pywikiss">{{get('WIKI_VERSION', 'No Title')}}</a> très fortement inspiré de <a href="http://projet.idleman.fr/blazekiss/">Blazekiss</a>
 		</nav>
 	</footer>
 </div>
