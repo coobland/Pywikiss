@@ -116,7 +116,8 @@ def show_page(page_name, action, params={}):
 	params['CHANGE'] = 'Dernière modification'
 
 	# Add last file modification date parameter.
-	params['TIME'] = time.ctime(os.path.getmtime(file_path))
+	if os.path.exists(file_path):
+		params['TIME'] = time.ctime(os.path.getmtime(file_path))
 
 	return params
 

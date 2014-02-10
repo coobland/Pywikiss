@@ -51,7 +51,7 @@
 		 <br/>
          <hr/>
           <a href="/{{get('PAGE_NAME', 'Accueil')}}">{{get('PAGE_NAME', 'Accueil')}}</a> | 
-         {{get('LAST_CHANGE', '')}} : {{get('TIME', '-')}}| 
+         {{get('CHANGE', '')}} : {{get('TIME', '-')}}| 
          <a href="/{{PAGE_NAME}}/edit">Éditer</a>
          <!-- PAGE_TITLE  | LAST_CHANGE TIME (RECENT_CHANGES ) |EDIT HELP HISTORY -->
 		</section>    
