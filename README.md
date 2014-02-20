@@ -10,6 +10,7 @@ Pywikiss use the markdown syntax.
 * No needs to get bottle, it given with sources. 
 
 * Need python-markdown
+
     pip install markdown
 
 * Download and decompress Pywikiss archive

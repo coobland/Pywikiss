@@ -45,6 +45,7 @@ def all_pages(page_name, action=''):
 	"""
 
 	"""
+	logger.info(" -- Show page : %s" % page_name)
 	return show_page(page_name, action, {})
 
 @app.route('/<page_name>/<action>', method='POST')
@@ -53,7 +54,7 @@ def save_page(page_name, action=''):
 	'''
 
 	'''
-	logger.info("save page : %s" % page_name)
+	logger.info(" -- Save page : %s" % page_name)
 
 	params = {}
 	if authentificated():
@@ -75,7 +76,7 @@ def show_page(page_name, action, params={}):
 
 	file_path = "./pages/" + page_name + ".txt"
 	
-	logger.info("Show page : " + file_path)
+	logger.info("page path: " + file_path)
 
 	content = ''
 	if os.path.exists(file_path):
@@ -87,10 +88,7 @@ def show_page(page_name, action, params={}):
 
 		# Edit mode
 		if action == 'edit':
-			content = lines
-			if authentificated() == False:
-				logger.debug("je mets AUTHENTIFICATED à false")
-				params['AUTHENTIFICATED'] = 'False'
+			content = lines					
 		else:
 			# Replace this wiki syntax [[URL]] to the markdown syntax [URL](URL)
 			patternStr = ur'\[{2}([^\]]*)\]{2}'   # OR '\[\[([^\]]*)\]\]'  
@@ -109,6 +107,16 @@ def show_page(page_name, action, params={}):
 		params['CONTENT'] = ''
 		logger.debug("Empty page")
 
+	# Is user authentificated for edition mode.
+	if action == 'edit':
+		if authentificated() == True:
+			logger.debug("je mets AUTHENTIFICATED à true")
+			params['AUTHENTIFICATED'] = "True"
+		else:
+			logger.debug("je mets AUTHENTIFICATED à false")
+			if 'AUTHENTIFICATED' in params:
+				del(params['AUTHENTIFICATED'])
+
 	# Add menu content parameter.
 	params['MENU'] = compute_menu()
 
@@ -119,6 +127,10 @@ def show_page(page_name, action, params={}):
 	if os.path.exists(file_path):
 		params['TIME'] = time.ctime(os.path.getmtime(file_path))
 
+	if 'AUTHENTIFICATED' in params:
+		logger.debug('########   ' +  params['AUTHENTIFICATED']+ '   ########')
+	else:
+		logger.debug('########  AUTHENTIFICATED == null  ########')
 	return params
 
 def compute_menu():
@@ -176,10 +188,10 @@ def authentificated():
 			response.set_cookie("AutorisationPyWiKiss", g_pass, max_age=60*60*24)
 			logger.debug("enregistrement dans le coockie")
 
-		logger.debug("authentificated")
+		logger.debug("authentificated :o)")
 		return True
 	else:
-		logger.debug("Not authentificated")
+		logger.debug("Not authentificated :o(")
 		return False
 
 # Launch server on port 8080

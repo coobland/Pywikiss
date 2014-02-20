@@ -34,7 +34,7 @@
 				<textarea name="content" cols="83" rows="30" style="width: 100%;">{{!CONTENT if CONTENT else "No content"}}</textarea>
 				<input type="hidden" name="page" value="Projets" /><br/>
 				<p align="right">
-				% if defined('AUTHENTIFICATED'):
+				% if not defined('AUTHENTIFICATED'):
 					Mot de passe : <input type="password" name="password"/>
 				% end
 					<input type="submit" value="Enregistrer" accesskey="s" />
