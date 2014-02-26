@@ -66,9 +66,10 @@ def save_page(page_name, action=''):
 		params['ERROR'] = 'Password given incorrect.'
 		action = 'edit'
 
-	return show_page(page_name, action, params)
+	content = request.forms.get('content')
+	return show_page(page_name, action, params, content)
 
-def show_page(page_name, action, params={}):
+def show_page(page_name, action, params={}, content = ''):
 
 	params.update(config)
 	params['PAGE_NAME'] = page_name
@@ -78,7 +79,6 @@ def show_page(page_name, action, params={}):
 	
 	logger.info("page path: " + file_path)
 
-	content = ''
 	if os.path.exists(file_path):
 
 		# Open file in read mode.
@@ -87,9 +87,9 @@ def show_page(page_name, action, params={}):
 		lines = ''.join(lines)
 
 		# Edit mode
-		if action == 'edit':
+		if action == 'edit' and content == '':
 			content = lines					
-		else:
+		elif not action == 'edit':
 			# Replace this wiki syntax [[URL]] to the markdown syntax [URL](URL)
 			patternStr = ur'\[{2}([^\]]*)\]{2}'   # OR '\[\[([^\]]*)\]\]'  
 			repStr = ur'[\1](\1)'
@@ -127,10 +127,6 @@ def show_page(page_name, action, params={}):
 	if os.path.exists(file_path):
 		params['TIME'] = time.ctime(os.path.getmtime(file_path))
 
-	if 'AUTHENTIFICATED' in params:
-		logger.debug('########   ' +  params['AUTHENTIFICATED']+ '   ########')
-	else:
-		logger.debug('########  AUTHENTIFICATED == null  ########')
 	return params
 
 def compute_menu():
@@ -185,8 +181,8 @@ def authentificated():
 	# TODO : enregistrer le mot de passe en md5 dans le coockie.
 	if request.get_cookie("AutorisationPyWiKiss") and request.get_cookie("AutorisationPyWiKiss") == g_pass or u_pass and u_pass == g_pass or g_pass == '':
 		if request.get_cookie("AutorisationPyWiKiss") == None or request.get_cookie("AutorisationPyWiKiss") != g_pass:
-			response.set_cookie("AutorisationPyWiKiss", g_pass, max_age=60*60*24)
-			logger.debug("enregistrement dans le coockie")
+			response.set_cookie("AutorisationPyWiKiss", g_pass, max_age=60*60*24, path="/")
+			logger.debug("enregistrement dans le cookie")
 
 		logger.debug("authentificated :o)")
 		return True
