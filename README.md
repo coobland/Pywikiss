@@ -21,6 +21,12 @@ Pywikiss use the markdown syntax.
 
     python start.py
 
+## Use it
+
+* Click on ***Edit***, at the bottom of the page, to modify the page. Use the password defined in ***config.json*** to validate your modifications.
+* Pywikiss is made to use the markdown syntax. I add the following specific syntax to make a reference at a page in the wiki : [[A page]].
+* To create a new page, just type the name of the page in the address bar : [http://127.0.0.1/My new page].
+* To edit the menu, change the [[Menu]] page. 
 
 ## TODO List 
 
