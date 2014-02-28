@@ -10,7 +10,7 @@
 
 		% if ACTION != 'edit':
 
-			{{get('TOC', 'pas de TOC')}}
+			{{get('TOC', '')}}
 		
 			<menu>
             <div id="menu">{{!MENU if MENU else ""}}</div>
