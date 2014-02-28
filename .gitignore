@@ -34,3 +34,6 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# logs file
+pywikiss-server.log
