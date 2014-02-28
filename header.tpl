@@ -40,7 +40,7 @@
 
 	<header id="navtop">
 		<a href="/Accueil" class="logo fleft">
-			<img src="/static/img/logo.png" alt="PyWiKiss">
+			<img src="/static/img/logo.png" alt="BlazeKiss">
 		</a>
 		
 		<nav class="fright" style="margin-top:10px;">

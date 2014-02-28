@@ -6,7 +6,7 @@
 	"PAGES_DIR"   : "pages/",
 	"BACKUP_DIR"  : "historique/",
     "RECENT_NUMBER" : 10,  
-    "WIKI_TITLE"   : "PyWikiss, le Wiki Kiss.",
+    "WIKI_TITLE"   : "Le Wiki chaud comme une barquette de frittes :p",
     "START_PAGE"   : "Accueil",
     "HELP_PAGE"    : "Aide"
 }
