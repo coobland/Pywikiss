@@ -39,8 +39,9 @@
 <div class="container">
 
 	<header id="navtop">
+
 		<a href="/Accueil" class="logo fleft">
-			<img src="/static/img/logo.png" alt="BlazeKiss">
+			- PyWiKiss -
 		</a>
 		
 		<nav class="fright" style="margin-top:10px;">

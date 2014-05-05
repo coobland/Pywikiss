@@ -238,7 +238,7 @@ pre{
 ------------------------------------------------------------- */
 h1,h2,h3,h4,h5,h6{margin:0 0 1em; font-weight: normal;}
 
-h1 {font-size: 4.1em; 
+h1 {font-size: 3.1em; 
 	letter-spacing: -0.075em; 
 	text-transform: uppercase; 
 	line-height: 0.9; 
@@ -342,7 +342,15 @@ header#navtop { clear: both; overflow: hidden; }
     header nav ul { float: left; overflow: hidden; padding: 0 3em 0 2em; border-left: 1px solid #ddd; line-height: 2em; }
 nav a, menu a { text-decoration: none; color: #555; }
 .navactive { color: #0078CF }
-.logo:hover {background: none;}
+.logo:hover {background: none; text-decoration: none; color: #888888;}
+.logo {text-decoration: none;
+	color: #555555;
+    font-size: 3.1em;
+    font-weight: normal;
+    /*letter-spacing: -0.075em;*/
+    /*line-height: 0.9;*/
+    /*margin: 0 0 0.5em;*/
+}
 		
 		
 /* -- GENERAL 
