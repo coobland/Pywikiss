@@ -28,12 +28,3 @@ Pywikiss use the markdown syntax.
 * To create a new page, just type the name of the page in the address bar : [http://127.0.0.1/My new page].
 * To edit the menu, change the [[Menu]] page. 
 
-## TODO List 
-
-* ~~Manage menu~~
-* Manage pages backup  
-* Manage toc 
-* enregistrer le mot de passe en md5 dans le cookie.
-* ~~FIXME : problème d'authentification sur les nouvelles pages.~~
-* ~~FIXME : gestion des liens vers les pages un peu douteuse.~~
-* FIXME : mauvaise gestion des caractères accentués.
