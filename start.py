@@ -84,7 +84,7 @@ def show_page(page_name, action, params={}, content = ''):
 		# Open file in read mode.
 		page_file = open(file_path, "r")
 		lines = page_file.readlines()
-		lines = ''.join(lines)
+		lines = ''.join(lines).decode('utf-8')
 
 		# Edit mode
 		if action == 'edit' and content == '':
