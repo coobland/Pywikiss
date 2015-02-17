@@ -7,13 +7,8 @@ Pywikiss use the markdown syntax.
 
 ## Install it
 
-* No needs to get bottle, it given with sources. 
+* Need bottle and python-markdown.
 
-* Need python-markdown
-
-    pip install markdown==2.5.2
-
-or
 
     pip install -r requirements.txt
 
