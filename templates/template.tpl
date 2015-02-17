@@ -1,4 +1,4 @@
-%include('header.tpl')
+%include('templates/header.tpl')
 
 	<div class="services-page main grid-wrap">
 
@@ -57,4 +57,4 @@
 		</section>    
 	</div>
 
-%include('foother.tpl')
+%include('templates/foother.tpl')
