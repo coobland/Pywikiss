@@ -40,7 +40,7 @@ def server_static(filename):
 
 @app.route('/<page_name>')
 @app.route('/<page_name>/<action>')
-@view('template.tpl')
+@view('templates/template.tpl')
 def all_pages(page_name, action=''):
 	"""
 
@@ -49,7 +49,7 @@ def all_pages(page_name, action=''):
 	return show_page(page_name, action, {})
 
 @app.route('/<page_name>/<action>', method='POST')
-@view('template.tpl')
+@view('templates/template.tpl')
 def save_page(page_name, action=''):
 	'''
 
@@ -190,5 +190,5 @@ def authentificated():
 		logger.debug("Not authentificated :o(")
 		return False
 
-# Launch server on port 8080
+# Launch server on port 5000
 run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
