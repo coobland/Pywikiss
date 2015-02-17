@@ -191,4 +191,4 @@ def authentificated():
 		return False
 
 # Launch server on port 8080
-run(app, host='localhost', port=8080, reloader=True)
+run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))

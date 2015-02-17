@@ -11,7 +11,10 @@ Pywikiss use the markdown syntax.
 
 * Need python-markdown
 
-    pip install markdown
+    pip install markdown==2.5.2
+
+or
+    pip install -r requirements.txt
 
 * Download and decompress Pywikiss archive
 * Edit and modify config.json at your convenience, don't forget to change the password
