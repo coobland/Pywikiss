@@ -14,6 +14,7 @@ Pywikiss use the markdown syntax.
     pip install markdown==2.5.2
 
 or
+
     pip install -r requirements.txt
 
 * Download and decompress Pywikiss archive
