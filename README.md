@@ -5,6 +5,7 @@ It is strongly inspired by [Blazekiss](http://projet.idleman.fr/blazekiss/) but 
 It use the micro framework [bottle](http://bottlepy.org). 
 Pywikiss use the markdown syntax.
 
+
 ## Install it
 
 * Need bottle and python-markdown.
@@ -12,13 +13,17 @@ Pywikiss use the markdown syntax.
 
     pip install -r requirements.txt
 
+
 * Download and decompress Pywikiss archive
 * Edit and modify config.json at your convenience, don't forget to change the password
 * Make sure the Pywikiss directory and all subdirectories are writable and readable,  if this is not the case, do a chmod 775
 
+
 ## Run it
 
+
     python start.py
+
 
 ## Use it
 
